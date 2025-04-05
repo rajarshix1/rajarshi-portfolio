@@ -21,7 +21,7 @@ function HomeScreen() {
         </div>
       </div>
       {/* <div className="w-full md:w-5/12  bg-gradient-to-tl from-fuchsia-100 to-pink-400 p-1 rounded-4xl mt-4 md:mr-2"> */}
-      <div className={`w-full h-full md:w-5/12  bg-[url(/${darkTheme? `rainbow` : `multicol`}.gif)] pb-0.5 rounded-4xl mt-4 md:ml-2 relative  shadow-2xl shadow-fuchsia-500`}>
+      <div className={`w-full h-full md:w-5/12  ${darkTheme? 'bg-[url(/rainbow.gif)]': 'bg-[url(/multicol.gif)]'} pb-0.5 rounded-4xl mt-4 md:ml-2 relative  shadow-2xl shadow-fuchsia-500`}>
         <Image className="rounded-4xl min-w-[200px] w-full h-full object-cover" src="/mee.svg" alt="Rajarshi Image" height={600} width={1000}/>
       </div>
       </div>
