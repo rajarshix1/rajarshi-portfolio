@@ -2,7 +2,6 @@
 'use client'
 import React from 'react'
 import { useAppContext } from '../context/AppContext'
-import Switch from '@mui/material/Switch';
 import MaterialUISwitch from './MUISwitch';
 
 function Navbar() {
