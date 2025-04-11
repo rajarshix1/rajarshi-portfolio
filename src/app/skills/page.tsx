@@ -11,7 +11,7 @@ export default function Projects() {
       <Navbar />
       <div className='w-full my-2 md:my-6 px-1 md:px-6 flex flex-col md:flex-row text-center justify-center space-y-2'>
         <div className='p-2 md:p-6'>
-          <p className='bg-gradient-to-br from-violet-400 to-pink-200 bg-clip-text text-transparent text-3xl'>Here is the list of technologies I've worked with</p>
+          <p className='bg-gradient-to-br from-violet-400 to-pink-200 bg-clip-text text-transparent text-3xl'>Here is the list of technologies I have worked with:</p>
         </div>
       </div>
       <div className='flex items-center justify-center w-full mb-3'>
