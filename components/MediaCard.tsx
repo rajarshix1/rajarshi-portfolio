@@ -1,8 +1,13 @@
 'use client'
 import Image from "next/image";
 import { useAppContext } from "../context/AppContext";
-
-export default function MediaCard({title, image, description, shadow}:any) {
+interface MediaCardProps {
+    title: string;
+    image: string;
+    description: string;
+    shadow: string;
+  }
+export default function MediaCard({title, image, description, shadow}:MediaCardProps) {
     const {darkTheme} = useAppContext()
     return (
     <div className={`flex flex-col justify-center items-center h-50 w-80 md:h-60 md:w-60 p-2 ${darkTheme? `bg-slate-900 text-accent`: `bg-accent text-secondary`} rounded-2xl shadow-2xl ${shadow}`}>
