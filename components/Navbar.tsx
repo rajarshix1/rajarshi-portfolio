@@ -14,7 +14,7 @@ function Navbar() {
             <Link href='/'><p className='text-2xl font-bold bg-gradient-to-r from-fuchsia-800 to-pink-500 bg-clip-text text-transparent hover:cursor-pointer hover:text-red-700'>RAJARSHI MANDAL</p></Link>
             <ul className="flex space-x-6 text-xl">
            {pathName!="/" && <Link href='/'><li className='hover:cursor-pointer hover:text-emerald-600'>Home</li></Link>}
-            {pathName!='/skills' && <Link href='/projects'><li className='hover:cursor-pointer hover:text-emerald-600'>Skills</li></Link>}
+            {pathName!='/skills' && <Link href='/skills'><li className='hover:cursor-pointer hover:text-emerald-600'>Skills</li></Link>}
                 {pathName!='/projects' && <Link href='/projects'><li className='hover:cursor-pointer hover:text-purple-600'>Projects</li></Link>}
                 <MaterialUISwitch onChange={()=>setDarkTheme(!darkTheme)}/>
                 {/* <Switch  color={`default`}/> */}

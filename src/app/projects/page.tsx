@@ -11,7 +11,7 @@ export default function Projects() {
         <Navbar/>
         <div className='w-full my-2 md:my-6 px-1 md:px-6 flex flex-col md:flex-row text-center justify-center space-y-2'>
            <div className='p-2 md:p-6 md:w-1/2'>
-           <p>With 3+ years of experience, I have done multiple projects both in frontend and in backend.<br/> I have used JS, TS, Node.js, React, MongoDB, SQL, Welsockets and more technologies extensively.</p> 
+           <p>With 3+ years of experience, I have done multiple projects both in frontend and in backend.</p> 
            <p>My projects includes : Online Marketplaces, Chat applications, Management systems, Payment systems, Real time location tracking, Crypto exchange, Block explorers and more.</p>
            </div>
            <div  className='px-2 md:w-1/2  flex justify-center items-center p-5 ' >
