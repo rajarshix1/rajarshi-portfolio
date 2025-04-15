@@ -2,10 +2,8 @@
 
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 
-// Create context with a default fallback
 const AppContext = createContext<any>(null);
 
-// Hook to use context
 export const useAppContext = (): any => {
   const context = useContext(AppContext);
   if (!context) {
@@ -14,13 +12,23 @@ export const useAppContext = (): any => {
   return context;
 };
 
-// Provider component
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [darkTheme, setDarkTheme] = useState(true);
+  const [darkTheme, setDarkTheme] = useState<boolean | undefined>(undefined);
 
   useEffect(() => {
-    const root = document.documentElement;
+    const storedTheme = localStorage.getItem("theme");
+    setDarkTheme(storedTheme === "light" ? false : true); // default to dark
+  }, []);
 
+  const setTheme = (value: boolean) => {
+    setDarkTheme(value);
+    localStorage.setItem("theme", value ? "dark" : "light");
+  };
+
+  useEffect(() => {
+    if (darkTheme === undefined) return;
+
+    const root = document.documentElement;
     if (!darkTheme) {
       root.style.setProperty("--background", "#edfcff");
       root.style.setProperty("--foreground", "#020914");
@@ -30,8 +38,25 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [darkTheme]);
 
+  if (darkTheme === undefined) {
+    return (
+      <div
+        style={{
+          background: "#020914",
+          color: "#edfcff",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+        }}
+      >
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
   return (
-    <AppContext.Provider value={{ darkTheme, setDarkTheme }}>
+    <AppContext.Provider value={{ darkTheme, setDarkTheme, setTheme }}>
       {children}
     </AppContext.Provider>
   );
