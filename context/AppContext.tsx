@@ -61,3 +61,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     </AppContext.Provider>
   );
 };
+
+
+// export const useApp = ()=> createContext(AppContext)

@@ -36,7 +36,7 @@ function Navbar() {
                 </div>
             </div>
             <ul
-                className={` md:hidden  absolute top-12 left-6 ${darkTheme? `bg-secondary text-white` : `bg-white text-black `}  shadow-fuchsia-400 p-4 rounded-xl shadow-lg z-50 flex flex-col space-y-2 text-xl text-left transition-all duration-300 ease-in-out ${show ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'} `}
+                className={` md:hidden  absolute top-12 left-6 ${darkTheme? `bg-secondary text-white` : `bg-white text-black `}  shadow-fuchsia-200 p-4 rounded-xl shadow-lg z-50 flex flex-col space-y-2 text-xl text-left transition-all duration-300 ease-in-out ${show ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'} `}
             >            {pathName != "/" && <Link href='/'><li className='hover:cursor-pointer hover:text-emerald-600'>Home</li></Link>}
                 {pathName != '/skills' && <Link href='/skills'><li className='hover:cursor-pointer hover:text-emerald-600'>Skills</li></Link>}
                 {pathName != '/projects' && <Link href='/projects'><li className='hover:cursor-pointer hover:text-purple-600'>Projects</li></Link>}
