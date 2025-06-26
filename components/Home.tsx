@@ -1,16 +1,16 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import { useAppContext } from '../context/AppContext'
+// import { useAppContext } from '../context/AppContext'
 
 function HomeScreen() {
-    const {darkTheme} = useAppContext()
+    // const {darkTheme} = useAppContext()
   return (
     <div className="flex flex-col items-center md:justify-center md:flex-row mt-2 md:mt-10 px-6 md:px-10">
       <div className="flex flex-col space-y-2 md:space-y-4 mb-4 md:mr-2 w-full md:w-7/12 ">
         <p className="bg-gradient-to-br from-violet-400 to-pink-200 bg-clip-text text-transparent text-6xl">Welcome</p>
         <p className="bg-gradient-to-br from-violet-300 to-slate-50 bg-clip-text text-transparent text-5xl">To my Portfolio!</p>
-        <p>MERN Stack Engineer with 3+ years of experience in designing and
+        <p className="text-justify">MERN Stack Engineer with 3+ years of experience in designing and
           developing scalable backend solutions. Proficient in Node.js, React, Next.js, Nest.js, PostgreSQL, MongoDB,
           WebSocket, and payment gateway integrations, with expertise in building high-performance, data-driven
           applications.

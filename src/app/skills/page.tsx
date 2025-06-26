@@ -22,7 +22,7 @@ export default function Projects() {
           <MediaCard title="Node.js" image="/node.png" description="3+ years of experience" shadow="shadow-emerald-100" />
           <MediaCard title="Express.js" image="/express.png" description="3+ years of experience" shadow="shadow-yellow-100" />
           <MediaCard title="Nest.js" image="/nest.png" description="2 years of experience" shadow="shadow-red-100" />
-          <MediaCard title="Go" image="/go.png" description="A few months of experience" shadow="shadow-blue-100" />
+          <MediaCard title="Python" image="/python.png" description="2 years of experience" shadow="shadow-blue-100" />
         </div>
       </div>
       <div className='my-4'>
