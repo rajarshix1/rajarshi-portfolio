@@ -3,9 +3,34 @@ import React from 'react'
 import Image from 'next/image'
 import { useAppContext } from '../context/AppContext'
 
+// Define interfaces for type safety
+interface ProjectIconProps {
+  type: string;
+  darkTheme: boolean;
+  gradient: string;
+  lightGradient: string;
+}
+
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  icon: string;
+  darkTheme: boolean;
+  gradient: string;
+  lightGradient: string;
+}
+
+interface Project {
+  title: string;
+  description: string;
+  icon: string;
+  gradient: string;
+  lightGradient: string;
+}
+
 // Icon components using emoji or simple shapes
-const ProjectIcon = ({ type, darkTheme, gradient, lightGradient }:any) => {
-  const iconMap:any = {
+const ProjectIcon = ({ type, darkTheme, gradient, lightGradient }: ProjectIconProps) => {
+  const iconMap: { [key: string]: string } = {
     marketplace: '🛒',
     payment: '💳',
     chat: '💬',
@@ -17,18 +42,18 @@ const ProjectIcon = ({ type, darkTheme, gradient, lightGradient }:any) => {
   }
   
   return (
-    <div className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl ${darkTheme ? lightGradient: gradient} shadow-lg`}>
+    <div className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl ${darkTheme ? lightGradient : gradient} shadow-lg`}>
       {iconMap[type] || '💻'}
     </div>
   )
 }
 
-const ProjectCard = ({ title, description, icon, darkTheme, gradient, lightGradient }:any) => {
+const ProjectCard = ({ title, description, icon, darkTheme, gradient, lightGradient }: ProjectCardProps) => {
   return (
-    <div className={`${darkTheme? gradient : lightGradient} rounded-2xl p-4 hover:cursor-pointer`}>
+    <div className={`${darkTheme ? gradient : lightGradient} rounded-2xl p-4 hover:cursor-pointer`}>
       <div className='flex items-center justify-items-start space-x-4'>
         <ProjectIcon type={icon} darkTheme={darkTheme} gradient={gradient} lightGradient={lightGradient} />
-      <p>{title}</p>
+        <p>{title}</p>
       </div>
       <p>{description}</p>
     </div>
@@ -38,7 +63,7 @@ const ProjectCard = ({ title, description, icon, darkTheme, gradient, lightGradi
 export default function Projects() {
   const { darkTheme } = useAppContext()
   
-  const projects = [
+  const projects: Project[] = [
     {
       title: "Marketplace Apps",
       description: "Built two online marketplaces using Node.js and Next.js for the backend, Next.js for the frontend, and MongoDB as the database, deployed on AWS. Integrated Stripe and Razorpay for payments.",
@@ -92,8 +117,8 @@ export default function Projects() {
       title: "Blockchain Applications",
       description: "Contributed to and built multiple blockchain-based projects, including block explorers, crypto payment gateways supporting multiple coins and tokens, crypto conversion bridge backends, DAO backends, and more.",
       icon: "blockchain",
-      gradient: "bg-gradient-to-br from-violet-900 to-purple-900",
-      lightGradient: "bg-gradient-to-br from-violet-100 to-purple-100"
+      gradient: "bg-gradient-to-br from-slate-900 to-gray-900",
+      lightGradient: "bg-gradient-to-br from-slate-100 to-gray-100"
     }
   ]
   
@@ -134,12 +159,11 @@ export default function Projects() {
         <p className="text-center text-gray-600 dark:text-gray-300 max-w-md">
           Check out my GitHub profile for more projects and contributions
         </p>
-      <a href="https://github.com/rajarshix1" target="_blank" rel="noopener noreferrer">
-        <button className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl">
-          View GitHub Profile
-        </button>
-      </a>
-        
+        <a href="https://github.com/rajarshix1" target="_blank" rel="noopener noreferrer">
+          <button className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+            View GitHub Profile
+          </button>
+        </a>
       </div>
     </div>
   )
