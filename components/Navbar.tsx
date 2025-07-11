@@ -11,7 +11,7 @@ function Navbar() {
     const { darkTheme, setTheme } = useAppContext()
     const [show, setShow] = useState(false)
     return (
-<div className="fixed top-0 z-50 bg-white dark:bg-black w-full border-b border-gray-200 dark:border-gray-700">
+<div className={`fixed top-0 z-50 ${darkTheme ? `bg-secondary text-white` : `bg-white text-black `} w-full border-b border-gray-200 dark:border-gray-700`}>
                     <div className="flex flex-col md:flex-row items-center justify-between px-6 w-full  text-primary ">
             <Link className='hidden md:block' href='/'><p className='text-2xl font-bold bg-gradient-to-r from-fuchsia-800 to-pink-500 bg-clip-text text-transparent hover:cursor-pointer hover:text-red-700'>RAJARSHI MANDAL</p></Link>
             <ul className="hidden md:flex md:space-x-6 md:text-xl">
