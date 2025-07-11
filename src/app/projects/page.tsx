@@ -9,7 +9,7 @@ export default function Projects() {
   return (
     <div className={`flex flex-col min-h-screen font-mono ${darkTheme ? `bg-secondary text-accent` : `bg-white text-blue-950`}`}>
       <Navbar />
-      <div className='w-full my-2 md:my-6 px-1 md:px-6 flex flex-col md:flex-row text-center justify-center space-y-2 border-y-2 border-b-emerald-600'>
+      <div className='w-full my-2 md:my-6 px-1 md:px-6 flex flex-col md:flex-row text-center justify-center space-y-2 border-y-2 shadow-emerald-600'>
         <div className='flex flex-col justify-center text-xl items-center p-2 md:p-6 md:w-1/2'>
           <p className='text-justify'>With 3+ years of experience, I have done multiple projects both in frontend and in backend.<br />My projects includes : Online Marketplaces, Chat applications, Management systems, Payment systems, Real time location tracking, Crypto exchange, Block explorers and more.</p>
         </div>

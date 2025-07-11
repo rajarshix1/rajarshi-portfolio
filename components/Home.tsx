@@ -6,7 +6,7 @@ import React from 'react'
 function HomeScreen() {
     // const {darkTheme} = useAppContext()
   return (
-    <div className="flex flex-col items-center md:justify-center md:flex-row mt-2 md:mt-10 px-6 md:px-10">
+    <div id="home" className="scroll-mt-32 min-h-screen flex flex-col items-center md:justify-center md:flex-row px-6 md:px-10">
       <div className="flex flex-col space-y-2 md:space-y-4 mb-4 md:mr-2 w-full md:w-7/12 ">
         <p className="bg-gradient-to-br from-violet-400 to-pink-200 bg-clip-text text-transparent text-6xl">Welcome</p>
         <p className="bg-gradient-to-br from-violet-300 to-slate-50 bg-clip-text text-transparent text-5xl">To my Portfolio!</p>
@@ -21,9 +21,17 @@ function HomeScreen() {
         </div>
       </div>
       {/* <div className="w-full md:w-5/12  bg-gradient-to-tl from-fuchsia-100 to-pink-400 p-1 rounded-4xl mt-4 md:mr-2"> */}
-      <div className={`w-full h-full md:w-5/12  bg-[url(/multicol.gif)] pb-0.5 rounded-4xl mt-4 md:ml-2 relative  shadow-2xl shadow-fuchsia-200`}>
-        <Image className="rounded-4xl min-w-[200px] w-full h-full object-cover" src="/mee.svg" alt="Rajarshi Image" height={600} width={1000}/>
-      </div>
+      <div className="flex items-center justify-center w-full md:w-5/12">
+                <div className="w-112 h-112 md:w-128 md:h-128 bg-[url(/multicol.gif)] pb-0.5 rounded-4xl relative shadow-2xl shadow-fuchsia-200">
+                    <Image 
+                        className="rounded-4xl w-full h-full object-cover" 
+                        src="/mee.svg" 
+                        alt="Rajarshi Image" 
+                        height={400} 
+                        width={400}
+                    />
+                </div>
+            </div>
       </div>
   )
 }
