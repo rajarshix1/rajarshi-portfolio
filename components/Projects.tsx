@@ -123,7 +123,7 @@ export default function Projects() {
   ]
   
   return (
-    <div id="projects" className={`scroll-mt-12 md:scroll-mt-0 flex flex-col min-h-screen font-mono ${darkTheme ? `bg-secondary text-accent` : `bg-white text-blue-950`}`}>
+    <div id="projects" className={`scroll-mt-12 md:scroll-mt-0 flex flex-col min-h-screen font-mono ${darkTheme ? `text-accent` : ` text-blue-950`}`}>
       {/* Header Section */}
       <div className='w-full my-2 md:my-6 px-2 md:px-8 flex flex-col md:flex-row text-center justify-center space-y-2 border-y-2 shadow-emerald-600'>
         <div className='flex flex-col justify-center text-xl items-center p-4 md:p-6 md:w-1/2'>

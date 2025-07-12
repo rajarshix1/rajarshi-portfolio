@@ -10,7 +10,7 @@ interface MediaCardProps {
 export default function MediaCard({title, image, description, shadow}:MediaCardProps) {
     const {darkTheme} = useAppContext()
     return (
-    <div className={`flex flex-col justify-center items-center h-50 w-80 md:h-60 md:w-60 p-2 ${darkTheme? `bg-slate-900 text-accent`: `bg-accent text-secondary`} rounded-2xl shadow-xl ${shadow} border-2 border-green-500`}>
+    <div className={`flex flex-col justify-center items-center h-50 w-80 md:h-60 md:w-60 p-6 ${darkTheme? `bg-slate-900 text-accent`: `bg-white text-secondary`} rounded-2xl shadow-sm ${shadow} border-2 border-slate-800`}>
       <div className="flex items-center justify-center h-5/8">
       <Image
         src={image}
