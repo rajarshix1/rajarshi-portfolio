@@ -57,7 +57,7 @@ export default function Contact() {
                     I’m Available For Full-Time Roles & Freelance Projects.
                 </p>
 
-                <a href="mailto:rajarshimandalx@gmail.com" className={`group inline-flex items-center justify-center px-8 py-3 border border-white rounded-full text-lg hover:bg-white hover:text-black transition-colors duration-300 ${glowStyle}`}>
+                <a href="mailto:rajarshim5@gmail.com" className={`group inline-flex items-center justify-center px-8 py-3 border border-white rounded-full text-lg hover:bg-white hover:text-black transition-colors duration-300 ${glowStyle}`}>
                     Get In Touch
                     <ArrowForwardIcon className="ml-2 transition-transform group-hover:translate-x-1" />
                 </a>
