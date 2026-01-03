@@ -24,8 +24,9 @@ export default function Skills() {
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
+    const currentPanels = panelRefs.current;
 
-    panelRefs.current.forEach((panel, index) => {
+    currentPanels.forEach((panel) => {
         if (!panel) return;
 
         const observer = new IntersectionObserver(
@@ -43,7 +44,7 @@ export default function Skills() {
 
     return () => {
         observers.forEach((observer, index) => {
-            const panel = panelRefs.current[index];
+            const panel = currentPanels[index];
             if (panel) {
                 observer.unobserve(panel);
             }

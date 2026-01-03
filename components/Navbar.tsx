@@ -5,7 +5,6 @@ import { useAppContext } from '../context/AppContext'
 import MaterialUISwitch from './MUISwitch'
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
-import BuildIcon from '@mui/icons-material/Build';
 import FolderIcon from '@mui/icons-material/Folder';
 import PhoneIcon from '@mui/icons-material/Phone';
 

@@ -23,8 +23,10 @@ export default function Projects() {
   // Multi-observer setup
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
+    const currentPanels = panelRefs.current;
+    const currentSectionRef = projectSectionRef.current;
 
-    panelRefs.current.forEach((panel) => {
+    currentPanels.forEach((panel) => {
         if (!panel) return;
 
         const observer = new IntersectionObserver(
@@ -48,14 +50,21 @@ export default function Projects() {
             }
         }, { threshold: 0.1 }
     );
-    if(projectSectionRef.current) {
-        fallbackObserver.observe(projectSectionRef.current);
+    if(currentSectionRef) {
+        fallbackObserver.observe(currentSectionRef);
     }
 
 
     return () => {
-        observers.forEach((observer) => observer.disconnect());
-        fallbackObserver.disconnect();
+        observers.forEach((observer, index) => {
+            const panel = currentPanels[index];
+            if (panel) {
+                observer.unobserve(panel);
+            }
+        });
+        if(currentSectionRef) {
+            fallbackObserver.unobserve(currentSectionRef);
+        }
     };
   }, [setActiveSection]);
   
@@ -94,7 +103,6 @@ export default function Projects() {
   const textColor = darkTheme ? 'text-white' : 'text-black';
   const panelBgColor = darkTheme ? 'bg-black' : 'bg-gray-100';
   const headerBgColor = darkTheme ? 'bg-black' : 'bg-gray-100';
-  const borderColor = darkTheme ? 'border-white/10' : 'border-gray-200';
   const mutedTextColor = darkTheme ? 'text-gray-400' : 'text-gray-600';
 
   return (
@@ -148,7 +156,7 @@ export default function Projects() {
 
                     <div className="lg:col-span-5 flex flex-col gap-6">
                         <div>
-                            <span className="text-cyan-500 text-sm mb-2 block">0{index + 1} // Project</span>
+                            <span className="text-cyan-500 text-sm mb-2 block">{`0${index + 1} // Project`}</span>
                             <h2 className="text-4xl font-bold tracking-tight">{project.title}</h2>
                         </div>
                         

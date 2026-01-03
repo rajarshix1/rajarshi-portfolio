@@ -4,7 +4,7 @@ import { useAppContext } from '../context/AppContext'
 import Link from 'next/link'
 
 function HomeScreen() {
-    const { darkTheme, setTheme, setShowNav, setActiveSection } = useAppContext()
+    const { darkTheme, setShowNav, setActiveSection } = useAppContext()
     const [role, setRole] = useState("Full stack");
     const [isVisible, setIsVisible] = useState(true);
     const homeRef = useRef<HTMLDivElement>(null);
@@ -40,13 +40,14 @@ function HomeScreen() {
             { threshold: 0.1 } // Adjust threshold as needed
         );
 
-        if (homeRef.current) {
-            observer.observe(homeRef.current);
+        const currentRef = homeRef.current;
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            if (homeRef.current) {
-                observer.unobserve(homeRef.current);
+            if (currentRef) {
+                observer.unobserve(currentRef);
             }
         };
     }, [setShowNav, setActiveSection]);
