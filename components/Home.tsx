@@ -1,19 +1,64 @@
 'use client'
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useAppContext } from '../context/AppContext'
 import Link from 'next/link'
-// import { useAppContext } from '../context/AppContext'
 
 function HomeScreen() {
-    const {darkTheme} = useAppContext()
+    const { darkTheme, setTheme, setShowNav, setActiveSection } = useAppContext()
+    const [role, setRole] = useState("Full stack");
+    const [isVisible, setIsVisible] = useState(true);
+    const homeRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const roles = ["Full stack", "Backend", "Nodejs", "Mern stack"];
+        let index = 0;
+        let timeout: ReturnType<typeof setTimeout>;
+        const interval = setInterval(() => {
+            setIsVisible(false);
+            timeout = setTimeout(() => {
+                index = (index + 1) % roles.length;
+                setRole(roles[index]);
+                setIsVisible(true);
+            }, 500);
+        }, 2500);
+        return () => {
+            clearInterval(interval);
+            clearTimeout(timeout);
+        };
+    }, []);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setShowNav(false);
+                    setActiveSection('home');
+                } else {
+                    setShowNav(true);
+                }
+            },
+            { threshold: 0.1 } // Adjust threshold as needed
+        );
+
+        if (homeRef.current) {
+            observer.observe(homeRef.current);
+        }
+
+        return () => {
+            if (homeRef.current) {
+                observer.unobserve(homeRef.current);
+            }
+        };
+    }, [setShowNav, setActiveSection]);
+
   return (
-    <div id="home" className="scroll-mt-32 min-h-screen flex flex-col items-center justify-center md:flex-row  pt-16 md:pt-20 px-6 md:px-20">
+    <div ref={homeRef} id="home" className={`relative min-h-screen flex flex-col items-center justify-center md:flex-row pt-24 px-8 md:pl-24 ${darkTheme?'bg-[url(/bgbg.png)]' : 'bg-[url(/herobgsky.webp)]'} bg-cover bg-center h-screen}`}>
       <div className="flex flex-col space-y-2 md:space-y-4 mb-4 md:mr-2 w-full md:w-7/12 ">
         <p className={` ${darkTheme? 'text-slate-100' : 'text-slate-800' } bg-clip-text text-xl`}>Hello, I&apos;m</p>
-        <p className={` ${darkTheme? 'text-cyan-50' : 'text-slate-950' } bg-clip-text text-6xl`}>Rajarshi Mandal</p>
-        <p className={` ${darkTheme? 'text-slate-400' : 'text-slate-800' } bg-clip-text text-xl`}>I&apos;m A Passionate <span className={`font-bold ${darkTheme? 'text-white' : 'text-slate-900' }`}>Full stack Developer</span></p>
+        <h1 className={`font-black  ${darkTheme? 'text-cyan-50' : 'text-slate-950' } bg-clip-text font-semibold text-6xl`}>Rajarshi Mandal</h1>
+        <p className={` ${darkTheme? 'text-slate-400' : 'text-slate-800' } bg-clip-text text-xl`}>I&apos;m A Passionate <span className={`font-bold ${darkTheme? 'text-white' : 'text-slate-900' } block md:inline transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>{role} Developer</span></p>
         
-        <ul className="flex flex-row space-x-8 text-xl font-semibold cursor-pointer">
+        <ul className="flex flex-row space-x-2 text-xl font-semibold cursor-pointer">
           <Link href="#home">
           <li className={`text-cyan-700 font-bold`}>Home</li>
           </Link>
@@ -23,7 +68,9 @@ function HomeScreen() {
            <Link href="#projects">
           <li>Portfolio</li>
           </Link>
+          <Link href="#contact">
           <li>Contact</li>
+          </Link>
         </ul>
         <ul className="flex flex-row space-x-4 font-semibold cursor-pointer ">
           <li className="hover:text-cyan-700">Github</li>
@@ -31,23 +78,11 @@ function HomeScreen() {
           {/* <li>Contact</li> */}
         </ul>
         <div className="flex flex-row space-x-4 ">
-        {/* <button className="px-3 py-2 w-fit rounded-3xl bg-primary hover:bg-red-700 hover:cursor-pointer text-accent shadow-2xl shadow-blue-500">Contact Me</button> */}
         <a className={`px-6 py-2 w-fit rounded-3xl border-2  border-blue-700 hover:bg-cyan-700 hover:text-white hover:cursor-pointer flex items-center justify-center ${darkTheme? 'text-accent ' : 'text-black '} `} href="/Resume-Rajarshi-BE.pdf" download><button >View Resume</button></a>
-        {/* <a className={`px-6 py-2 w-fit rounded-3xl border-2  border-blue-700 hover:bg-red-700 hover:cursor-pointer flex items-center justify-center ${darkTheme? 'text-accent shadow-cyan-900' : 'text-black shadow-cyan-900'} shadow-lg shadow-cyan-900`} href="/Resume-Rajarshi-BE.pdf" download><button >View Resume</button></a> */}
         </div>
       </div>
-      {/* <div className="w-full md:w-5/12  bg-gradient-to-tl from-fuchsia-100 to-pink-400 p-1 rounded-4xl mt-4 md:mr-2"> */}
       <div className="hidden md:flex md:w-5/12">
-                {/* <div className="w-112 h-112 md:w-128 md:h-128 bg-[url(/multicol.gif)] pb-0.5 rounded-4xl relative shadow-2xl shadow-fuchsia-200">
-                    <Image 
-                        className="rounded-4xl w-full h-full object-cover" 
-                        src="/mee.svg" 
-                        alt="Rajarshi Image" 
-                        height={400} 
-                        width={400}
-                    />
-                </div> */}
-            </div>
+      </div>
       </div>
   )
 }

@@ -13,11 +13,15 @@ export const useAppContext = (): any => {
 };
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [darkTheme, setDarkTheme] = useState<boolean | undefined>(undefined);
+  const [darkTheme, setDarkTheme] = useState(true); // Default to dark theme to avoid mismatch
+  const [showNav, setShowNav] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
-    setDarkTheme(storedTheme === "light" ? false : true); // default to dark
+    if (storedTheme !== null) {
+        setDarkTheme(storedTheme === "light" ? false : true);
+    }
   }, []);
 
   const setTheme = (value: boolean) => {
@@ -26,8 +30,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    if (darkTheme === undefined) return;
-
+    // This effect will run on server with default, and on client with updated theme
     const root = document.documentElement;
     if (!darkTheme) {
       root.style.setProperty("--background", "#edfcff");
@@ -38,25 +41,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [darkTheme]);
 
-  if (darkTheme === undefined) {
-    return (
-      <div
-        style={{
-          background: "#020914",
-          color: "#edfcff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100vh",
-        }}
-      >
-        <p>Loading...</p>
-      </div>
-    );
-  }
-
   return (
-    <AppContext.Provider value={{ darkTheme, setDarkTheme, setTheme }}>
+    <AppContext.Provider value={{ darkTheme, setDarkTheme, setTheme, showNav, setShowNav, activeSection, setActiveSection }}>
       {children}
     </AppContext.Provider>
   );

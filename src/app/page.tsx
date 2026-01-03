@@ -3,12 +3,13 @@ import HomeScreen from "../../components/Home";
 import { useAppContext } from "../../context/AppContext";
 import Projects from "../../components/Projects";
 import Skills from "../../components/Skills";
+import Contact from "../../components/Contact";
 
 export default function Home() {
   const { darkTheme } = useAppContext()
 
   return (
-    <div className={`flex flex-col min-h-screen font-mono bg-cover bg-center ${darkTheme ?
+    <div className={`flex flex-col min-h-screen bg-cover bg-center ${darkTheme ?
       `text-accent bg-gradient-to-r from-black via-slate-950  to-blue-950` : 
       `text-blue-950 bg-gradient-to-r from-white via-slate-200  to-blue-200`
       }`}
@@ -24,6 +25,7 @@ export default function Home() {
       <HomeScreen />
       <Skills />
       <Projects />
+      <Contact />
     </div>
   )
 }

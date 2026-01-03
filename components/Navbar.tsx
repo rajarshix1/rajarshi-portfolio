@@ -1,53 +1,56 @@
-// import Image from 'next/image'
 'use client'
-import React, {  } from 'react'
+import React from 'react'
+import Link from 'next/link'
 import { useAppContext } from '../context/AppContext'
-import MaterialUISwitch from './MUISwitch';
-import Link from 'next/link';
-// import MenuIcon from '@mui/icons-material/Menu';
+import MaterialUISwitch from './MUISwitch'
+import HomeIcon from '@mui/icons-material/Home';
+import PersonIcon from '@mui/icons-material/Person';
+import BuildIcon from '@mui/icons-material/Build';
+import FolderIcon from '@mui/icons-material/Folder';
+import PhoneIcon from '@mui/icons-material/Phone';
+
+const navItems = [
+    { id: 'home', icon: <HomeIcon />, label: 'Home' },
+    { id: 'skills', icon: <PersonIcon />, label: 'About' },
+    { id: 'projects', icon: <FolderIcon />, label: 'Projects' },
+    { id: 'contact', icon: <PhoneIcon />, label: 'Contact' },
+];
+
 function Navbar() {
-    const { darkTheme, setTheme } = useAppContext()
+    const { darkTheme, setTheme, showNav, activeSection } = useAppContext()
+
+    const activeLinkStyle = darkTheme
+        ? 'shadow-[0_0_15px_5px_rgba(0,255,255,0.5)] bg-cyan-500/20 text-cyan-300'
+        : 'shadow-[0_0_15px_5px_rgba(0,100,150,0.6)] bg-cyan-500/30 text-cyan-800';
+
     return (
-        <div className={`fixed top-0 z-50 ${darkTheme ? ` bg-gradient-to-r from-black via-slate-950  to-blue-950 text-white` : ` text-black bg-gradient-to-r from-white via-slate-200  to-blue-200`} w-full  `}>
-            <div className="flex md:flex-row items-center justify-between px-6 w-full  text-primary ">
-                <Link className=' md:block flex' href='/'><p className='text-3xl font-bold bg-gradient-to-r from-cyan-800 to-slate-200 bg-clip-text text-transparent hover:cursor-pointer hover:text-red-700'>RM</p></Link>
-                <ul className="hidden md:flex md:space-x-6 md:text-xl">
-                     {<Link href='#home'><li className='hover:cursor-pointer hover:text-emerald-600'>🏠</li></Link>}
-                    {<Link href='#skills'><li className='hover:cursor-pointer hover:text-emerald-600'>⚒️</li></Link>}
-                    {<Link href='#projects'><li className='hover:cursor-pointer hover:text-purple-600'>📚</li></Link>}
-                    <MaterialUISwitch onChange={() => setTheme(!darkTheme)} />
-                    {/* <Switch  color={`default`}/> */}
-                </ul>
-                <ul className="md:hidden flex flex-row space-x-6 text-xl">
-                    {<Link href='#home'><li className='hover:cursor-pointer hover:text-emerald-600'>🏠</li></Link>}
-                    {<Link href='#skills'><li className='hover:cursor-pointer hover:text-emerald-600'>⚒️</li></Link>}
-                    {<Link href='#projects'><li className='hover:cursor-pointer hover:text-purple-600'>📚</li></Link>}
-                    <MaterialUISwitch onChange={() => setTheme(!darkTheme)} />
-                    {/* <Switch  color={`default`}/> */}
-                </ul>
-                {/* <p className='md:hidden'>✨✨</p> */}
-                {/* <div className='md:hidden w-full flex justify-between py-2'>
-                <div className="md:hidden flex flex-col items-center justify-center">
-
-                    {show ?
-                        <MenuOpenIcon className='md:hidden' onClick={() => setShow(!show)} />
-                        : <MenuIcon className='md:hidden' onClick={() => setShow(!show)} />
-                    }
+        <nav
+            className={`fixed z-50 transition-opacity duration-500 ${showNav ? 'opacity-100' : 'opacity-0'}
+                        bottom-0 left-0 w-full 
+                        md:w-auto md:left-4 md:top-1/2 md:-translate-y-1/2 md:translate-x-0 md:bottom-auto`}
+        >
+            <div className={`flex flex-row items-center justify-evenly p-1 w-full
+                        md:flex-col md:space-y-2 md:w-auto md:rounded-full md:p-1
+                        ${darkTheme ? 'bg-black/20' : 'bg-white/20'} backdrop-blur-sm border ${darkTheme ? 'border-gray-700/80' : 'border-gray-300/80'}`}>
+                {navItems.map((item) => (
+                    <Link
+                        key={item.id}
+                        href={`#${item.id}`}
+                        className={`w-7 h-7 flex items-center justify-center rounded-full transition-all duration-300 ${activeSection === item.id
+                                ? activeLinkStyle
+                                : `${darkTheme ? 'text-gray-400 hover:bg-white/10' : 'text-gray-600 hover:bg-black/10'}`
+                            }`}
+                        aria-label={item.label}
+                    >
+                        {item.icon}
+                    </Link>
+                ))}
+                <div className="hidden md:block border-t border-gray-700/50 w-full my-1"></div>
+                <div className="scale-75">
+                    <MaterialUISwitch onChange={() => setTheme(!darkTheme)} checked={darkTheme} />
                 </div>
-                <div className="md:hidden flex flex-col items-center justify-center">
-                    <MaterialUISwitch onChange={() => setTheme(!darkTheme)} />
-                </div>
-            </div> */}
-                {/* <ul
-                className={` md:hidden  absolute top-12 left-6 ${darkTheme ? `bg-secondary text-white` : `bg-white text-black `}  shadow-fuchsia-200 p-4 rounded-xl shadow-lg z-50 flex flex-col space-y-2 text-xl text-left transition-all duration-300 ease-in-out ${show ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'} `}
-            >            { <Link href='#home'><li className='hover:cursor-pointer hover:text-emerald-600'>Home</li></Link>}
-                { <Link href='#skills'><li className='hover:cursor-pointer hover:text-emerald-600'>Skills</li></Link>}
-                { <Link href='#projects'><li className='hover:cursor-pointer hover:text-purple-600'>Projects</li></Link>}
-            </ul> */}
             </div>
-        </div>
-
-
+        </nav>
     )
 }
 

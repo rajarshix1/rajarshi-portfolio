@@ -19,8 +19,8 @@ export default function Projects() {
           <p className='bg-gradient-to-br from-blue-400 to-fuchsia-400 bg-clip-text text-transparent text-2xl'>✨Back-end✨</p>
         </div>
         <div className='flex flex-col md:justify-center items-center md:flex-row space-y-2 md:space-y-0 md:space-x-4'>
-          <MediaCard title="Node.js" image="/node.png" description="3+ years of experience" shadow="shadow-emerald-100" />
-          <MediaCard title="Express.js" image="/express.png" description="3+ years of experience" shadow="shadow-yellow-100" />
+          <MediaCard title="Node.js" image="/node.png" description="4 years of experience" shadow="shadow-emerald-100" />
+          <MediaCard title="Express.js" image="/express.png" description="4 years of experience" shadow="shadow-yellow-100" />
           <MediaCard title="Nest.js" image="/nest.png" description="2 years of experience" shadow="shadow-red-100" />
           <MediaCard title="Python" image="/python.png" description="2 years of experience" shadow="shadow-blue-100" />
         </div>
@@ -30,9 +30,9 @@ export default function Projects() {
           <p className='bg-gradient-to-br from-blue-400 to-fuchsia-400 bg-clip-text text-transparent text-2xl'>✨Front-end + App✨</p>
         </div>
         <div className='flex flex-col md:justify-center items-center mb-[30px] md:flex-row space-y-2 md:space-y-0 md:space-x-4'>
-          <MediaCard title="React.js" image="/react.png" description="3+ years of experience" shadow="shadow-emerald-100" />
-          <MediaCard title="Next.js" image="/next.png" description="3+ years of experience" shadow="shadow-yellow-100" />
-          <MediaCard title="Tailwind" image="/tailwind.png" description="3+ years of experience" shadow="shadow-red-100" />
+          <MediaCard title="React.js" image="/react.png" description="4 years of experience" shadow="shadow-emerald-100" />
+          <MediaCard title="Next.js" image="/next.png" description="4 years of experience" shadow="shadow-yellow-100" />
+          <MediaCard title="Tailwind" image="/tailwind.png" description="4 years of experience" shadow="shadow-red-100" />
           <MediaCard title="React Native" image="/reactnative.png" description="A few months of experience" shadow="shadow-blue-100" />
         </div>
       </div>
